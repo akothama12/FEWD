@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            input {
+                width: 300px;
+                font-size: 20px;
+            }
+            button {
+                width: 230px;
+                font-size: 20px;
+            }
+            .button_div {
+                margin-top: 10px;
+            }
+            #container {
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+        <script>
+            function performOperation(operation) {
+                const num1 = parseFloat(document.getElementById('num1').value);
+                const num2 = parseFloat(document.getElementById('num2').value);
+                let result;
+
+                switch(operation) {
+                    case 'addition':
+                        result = num1 + num2;
+                        break;
+                    case 'subtraction':
+                        result = num1 - num2;
+                        break;
+                    case 'multiplication':
+                        result = num1 * num2;
+                        break;
+                    case 'division':
+                        if (num2 === 0) {
+                            alert("Cannot divide by zero.");
+                            return;
+                        }
+                        result = num1 / num2;
+                        break;
+                    default:
+                        alert("Invalid operation.");
+                        return;
+                }
+
+                document.getElementById('res').value = result; 
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div class="input_div">
+                <input placeholder="Enter the value of X" id="num1"/>
+                <input placeholder="Enter the value of Y" id="num2"/>
+                <input placeholder="Result will appear here" id="res" disabled/>
+            </div>
+
+            <div class="button_div">
+                <button onclick="performOperation('addition')">Addition (X + Y)</button>
+                <button onclick="performOperation('subtraction')">Subtraction (X - Y)</button>
+                <button onclick="performOperation('multiplication')">Multiplication (X * Y)</button>
+                <button onclick="performOperation('division')">Division (X / Y)</button>
+            </div>            
+        </div>
+    </body>
+</html>
